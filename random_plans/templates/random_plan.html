@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block content %}
+  <h2>Tu plan aleatorio es:</h2>
+  <div class="plan">
+    <h3>{{ plan.title }}</h3>
+    <p>{{ plan.description }}</p>
+    <p><strong>Ubicación:</strong> {{ plan.location }}</p>
+    <p><strong>Categoría:</strong> {{ plan.category }}</p>
+  </div>
+  <a href="/random">🔁 Generar otro</a>
+{% endblock %}

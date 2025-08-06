@@ -1,0 +1,113 @@
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #121212;
+  color: #e0e0e0;
+}
+
+.card {
+  background-color: #1e1e1e;
+  border: 1px solid #333;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.btn-yellow {
+  background-color: #ffcc00;
+  color: #000;
+  border: none;
+}
+
+.btn-yellow:hover {
+  background-color: #e6b800;
+  color: #000;
+}
+
+.container {
+  background-color: #1a1a1a;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 0 10px rgba(255, 204, 0, 0.1); /* sutil efecto amarillo */
+}
+
+.alert-empty {
+  color: #ffcc00;
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
+.nav-link {
+  color: #ccc;
+  position: relative;
+  transition: color 0.3s ease;
+  text-decoration: none;
+}
+
+.nav-link::after {
+  content: "";
+  position: absolute;
+  width: 0%;
+  height: 3px;
+  left: 0;
+  bottom: 0;
+  background-color: #ffcc00;
+  transition: width 0.3s ease;
+}
+
+.nav-link:hover {
+  color: #ffcc00;
+}
+
+.nav-link:hover::after {
+  width: 100%;
+}
+
+/* Aplica a todos los campos de texto, incluyendo inputs y textareas */
+.form-control:hover,
+.form-control:focus {
+  border-color: #ffcc00 !important;
+  box-shadow: 0 0 0 0.2rem rgba(255, 204, 0, 0.25);
+}
+
+/* Opcional: cambia también el color del texto o del fondo al hacer focus */
+.form-control:focus {
+  outline: none;
+  background-color: #1a1a1a;
+  color: #fff;
+}
+/* Contenedor de botones con emoji */
+.btn-emoji {
+  border: 2px solid #555;
+  border-radius: 10px;
+  padding: 0.5rem 0.75rem;
+  background-color: #1e1e1e;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+  color: #f0f0f0;
+  width: 70px; /* ancho fijo para alinear */
+  cursor: pointer;
+}
+
+/* Hover suave */
+.btn-emoji:hover {
+  background-color: #333;
+  border-color: #ffcc00;
+  color: #ffcc00;
+}
+
+/* Cuando está seleccionado */
+input[type="radio"]:checked + .btn-emoji {
+  background-color: #ffcc00;
+  color: #000;
+  border-color: #ffcc00;
+}
+
+/* Emoji centrado y tamaño aumentado */
+.btn-emoji .emoji {
+  user-select: none;
+}
+
+/* Texto pequeño debajo del emoji */
+.btn-emoji small {
+  font-size: 0.75rem;
+  user-select: none;
+}

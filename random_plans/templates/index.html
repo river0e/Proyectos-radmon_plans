@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block title %}Inicio - Planes Aleatorios{% endblock %}
+
+{% block content %}
+  <h1 class="mb-4">Lista de Planes</h1>
+
+  {% if plans %}
+    <div class="list-group">
+      {% for plan in plans %}
+        <a href="#" class="list-group-item list-group-item-action">
+          <h5 class="mb-1">{{ plan.title }}</h5>
+          <p class="mb-1">{{ plan.description }}</p>
+          <small><strong>Ubicación:</strong> {{ plan.location }} | <strong>Categoría:</strong> {{ plan.category }}</small>
+        </a>
+      {% endfor %}
+    </div>
+  {% else %}
+    <div class="alert alert-empty">No hay planes disponibles.</div>
+  {% endif %}
+{% endblock %}
