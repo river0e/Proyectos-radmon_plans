@@ -22,6 +22,27 @@ body {
   color: #000;
 }
 
+.btn-neon {
+  border: 2px solid #ffcc00; /* amarillo similar */
+  background-color: transparent;
+  color: #ffcc00;
+  font-weight: 600;
+  padding: 0.375rem 0.75rem;
+  transition: all 0.3s ease;
+}
+
+.btn-neon:hover,
+.btn-neon:focus {
+  color: #fff;
+  background-color: #ffcc00;
+  box-shadow:
+    0 0 8px #ffcc00,
+    0 0 15px #ffcc00,
+    0 0 20px #fff176,
+    0 0 30px #fff176;
+  outline: none;
+} 
+
 .container {
   background-color: #1a1a1a;
   padding: 20px;
@@ -77,13 +98,13 @@ body {
 /* Contenedor de botones con emoji */
 .btn-emoji {
   border: 2px solid #555;
-  border-radius: 10px;
+  border-radius: 30px;
   padding: 0.5rem 0.75rem;
   background-color: #1e1e1e;
   transition: all 0.2s ease;
   box-shadow: 0 2px 6px rgba(0,0,0,0.2);
   color: #f0f0f0;
-  width: 70px; /* ancho fijo para alinear */
+  width: 80px; /* ancho fijo para alinear */
   cursor: pointer;
 }
 
@@ -110,4 +131,13 @@ input[type="radio"]:checked + .btn-emoji {
 .btn-emoji small {
   font-size: 0.75rem;
   user-select: none;
+}
+
+.emoji-category {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem 1.5rem;
+  max-width: calc(7 * 80px + 6 * 1.5rem); /* 7 botones + 6 espacios horizontales */
+  margin: 0 auto;
 }
