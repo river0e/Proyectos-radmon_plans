@@ -3,19 +3,50 @@
 {% block title %}Inicio - Planes Aleatorios{% endblock %}
 
 {% block content %}
-  <h1 class="mb-4">Lista de Planes</h1>
 
-  {% if plans %}
-    <div class="list-group">
-      {% for plan in plans %}
-        <a href="#" class="list-group-item list-group-item-action">
-          <h5 class="mb-1">{{ plan.title }}</h5>
-          <p class="mb-1">{{ plan.description }}</p>
-          <small><strong>Ubicación:</strong> {{ plan.location }} | <strong>Categoría:</strong> {{ plan.category }}</small>
-        </a>
-      {% endfor %}
+<div class="d-flex justify-content-between align-items-center mb-4">
+  <h2>Lista de Planes</h2>
+</div>
+
+{% if plans %}
+<div class="list-group">
+  {% for plan in plans %}
+  <div class="list-group-item">
+    <a href="#" class="text-decoration-none text-dark">
+      <h5 class="mb-1">{{ plan.title }}</h5>
+      <p class="mb-1">{{ plan.description }}</p>
+      <small><strong>Ubicación:</strong> {{ plan.location }} | <strong>Categoría:</strong> {{ plan.category }}</small>
+    </a>
+    <div class="d-flex gap-2 mt-2 flex-wrap">
+      <!-- Botones aquí -->
+      <a href="https://wa.me/?text=¡Mira este plan! {{ request.url_root }}plan/{{ plan.id }}" target="_blank"
+        class="btn btn-success btn-sm d-flex align-items-center gap-1">
+        <i class="fab fa-whatsapp"></i> WhatsApp
+      </a>
+
+      <button onclick="sharePlan('{{ plan.title }}', '{{ request.url_root }}plan/{{ plan.id }}')"
+        class="btn btn-warning btn-sm d-flex align-items-center gap-1">
+        <i class="fas fa-share-alt"></i> Compartir
+      </button>
     </div>
-  {% else %}
-    <div class="alert alert-empty">No hay planes disponibles.</div>
-  {% endif %}
+  </div>
+  {% endfor %}
+</div>
+{% else %}
+<div class="alert alert-empty">No hay planes disponibles.</div>
+{% endif %}
+
+<script>
+  function sharePlan(title, url) {
+    if (navigator.share) {
+      navigator.share({
+        title: title,
+        url: url
+      }).catch(console.error);
+    } else {
+      alert('Tu navegador no soporta la función de compartir nativa. Usa WhatsApp o Email.');
+    }
+  }
+</script>
+
 {% endblock %}
