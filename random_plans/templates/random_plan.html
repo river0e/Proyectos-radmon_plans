@@ -1,54 +1,11 @@
 {% extends 'base.html' %}
-
 {% block content %}
-  <h2 class="mb-4">
-    {% if category %}
-      Plan aleatorio en categoría: {{ category }}
-    {% else %}
-      Plan aleatorio
-    {% endif %}
-  </h2>
-
-  {% if plan %}
-    <div class="card bg-dark text-light p-3 rounded">
-      <h3>{{ plan.title }}</h3>
-      <p>{{ plan.description }}</p>
-      <p><strong>Ubicación:</strong> {{ plan.location }}</p>
-      <p><strong>Categoría:</strong> {{ plan.category }}</p>
-
-      <!-- Botones compartir -->
-      <div class="d-flex gap-2 mt-3 flex-wrap">
-        <a href="https://wa.me/?text=¡Mira este plan! {{ request.url_root }}plan/{{ plan.id }}" target="_blank"
-           class="btn btn-success btn-sm d-flex align-items-center gap-1">
-          <i class="fab fa-whatsapp"></i> WhatsApp
-        </a>
-
-        <button onclick="sharePlan('{{ plan.title }}', '{{ request.url_root }}plan/{{ plan.id }}')"
-                class="btn btn-warning btn-sm d-flex align-items-center gap-1">
-          <i class="fas fa-share-alt"></i> Compartir
-        </button>
-      </div>
-    </div>
-
-    <a href="{{ url_for('random_plan', category=category) }}" class="btn btn-yellow btn mt-3">Generar otro plan</a>
-
-  {% else %}
-    <div class="alert alert-warning">
-      ⚠ No hay planes en esta categoría. ¡Crea uno primero!
-    </div>
-  {% endif %}
-  
-  <script>
-    function sharePlan(title, url) {
-      if (navigator.share) {
-        navigator.share({
-          title: title,
-          url: url
-        }).catch(console.error);
-      } else {
-        alert('Tu navegador no soporta la función de compartir nativa. Usa WhatsApp.');
-      }
-    }
-  </script>
+  <h2>Tu plan aleatorio es:</h2>
+  <div class="plan">
+    <h3>{{ plan.title }}</h3>
+    <p>{{ plan.description }}</p>
+    <p><strong>Ubicación:</strong> {{ plan.location }}</p>
+    <p><strong>Categoría:</strong> {{ plan.category }}</p>
+  </div>
+  <a href="/random">🔁 Generar otro</a>
 {% endblock %}
-

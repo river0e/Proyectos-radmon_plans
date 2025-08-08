@@ -1,15 +1,15 @@
 {% extends "base.html" %} {% block title %}Crear Plan - Planes Aleatorios{%
 endblock %} {% block content %}
-<h2 class="mb-4">Crear un Nuevo Plan</h2>
+<h1 class="mb-4">Crear un Nuevo Plan</h1>
 
 <form method="POST" action="{{ url_for('create_plan') }}">
   <div class="mb-3">
-    <label for="title" class="form-label">Título: </label>
+    <label for="title" class="form-label">Título</label>
     <input type="text" class="form-control" id="title" name="title" required />
   </div>
 
   <div class="mb-3">
-    <label for="description" class="form-label">Descripción: </label>
+    <label for="description" class="form-label">Descripción</label>
     <textarea
       class="form-control"
       id="description"
@@ -20,7 +20,7 @@ endblock %} {% block content %}
   </div>
 
   <div class="mb-3">
-    <label for="location" class="form-label">Ubicación: </label>
+    <label for="location" class="form-label">Ubicación</label>
     <input
       type="text"
       class="form-control"
@@ -31,11 +31,11 @@ endblock %} {% block content %}
   </div>
 
 <div class="mb-3">
-  <label class="form-label d-block mb-2">Categoría: </label>
+  <label class="form-label d-block mb-2">Categoría</label>
   <div class="emoji-category d-flex flex-wrap gap-3">
     {% for cat in [
       {'label': 'Montaña', 'emoji': '⛰️'},
-      {'label': 'Playa o Rio', 'emoji': '🌊'},
+      {'label': 'Playa', 'emoji': '🏖️'},
       {'label': 'Cóctel', 'emoji': '🍸'},
       {'label': 'Deportes', 'emoji': '⚽'},
       {'label': 'Comida', 'emoji': '🍽️'},
@@ -44,8 +44,6 @@ endblock %} {% block content %}
       {'label': 'Cine', 'emoji': '🎬'},
       {'label': 'Parque', 'emoji': '🌳'},
       {'label': 'Concierto', 'emoji': '🎵'},
-      {'label': 'Juegos de mesa', 'emoji': '🎲'},
-      {'label': 'Videojuegos', 'emoji': '🎮'},
       {'label': 'Aventura', 'emoji': '🧗'},
       {'label': 'Relajación', 'emoji': '🛀'}
     ] %}

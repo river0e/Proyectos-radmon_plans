@@ -1,6 +1,5 @@
 from flask import Flask, render_template, request, redirect
 from flask_sqlalchemy import SQLAlchemy
-from sqlalchemy import or_
 import random
 
 app = Flask(__name__)
@@ -16,20 +15,8 @@ class Plan(db.Model):
 
 @app.route('/')
 def index():
-    search = request.args.get('search', '')
-
-    if search:
-        plans = Plan.query.filter(
-            or_(
-                Plan.title.ilike(f'%{search}%'),
-                Plan.description.ilike(f'%{search}%'),
-                Plan.location.ilike(f'%{search}%')
-            )
-        ).all()
-    else:
-        plans = Plan.query.all()
-
-    return render_template('index.html', plans=plans, search=search)
+    plans = Plan.query.all()
+    return render_template('index.html', plans=plans)
 
 @app.route('/create', methods=['GET', 'POST'])
 def create_plan():
@@ -46,27 +33,11 @@ def create_plan():
 
 @app.route('/random')
 def random_plan():
-    category = request.args.get('category')
-    search = request.args.get('search', '')
-
-    if category:
-        plans = Plan.query.filter_by(category=category).all()
-    elif search:
-        plans = Plan.query.filter(
-            or_(
-                Plan.title.ilike(f'%{search}%'),
-                Plan.description.ilike(f'%{search}%'),
-                Plan.location.ilike(f'%{search}%')
-            )
-        ).all()
-    else:
-        plans = Plan.query.all()
-    
-    if not plans:
-        return render_template('random_plan.html', plan=None, category=category)
-    
-    plan = random.choice(plans)
-    return render_template('random_plan.html', plan=plan, category=category)
+    plans = Plan.query.all()
+    if plans:
+        plan = random.choice(plans)
+        return render_template('random_plan.html', plan=plan)
+    return "No hay planes aún."
 
 if __name__ == '__main__':
     with app.app_context():
