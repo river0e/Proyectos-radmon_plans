@@ -6,6 +6,7 @@
 
 <div class="d-flex justify-content-between align-items-center mb-4">
   <h2>Lista de Planes</h2>
+  <h2 class="alert alert-empty">Elije entre los planes disponibles, adaptalos a tu entorno, crea nuevos...</h2>
 </div>
 
 {% if plans %}
@@ -15,15 +16,21 @@
     <a href="#" class="text-decoration-none text-dark">
       <h5 class="mb-1">{{ plan.title }}</h5>
       <p class="mb-1">{{ plan.description }}</p>
-      <small><strong>Ubicación:</strong> {{ plan.location }} | <strong>Categoría:</strong> {{ plan.category }}</small>
+      <small>
+        <strong>Ubicación:</strong> {{ plan.location }} |
+        <strong>Categoría:</strong> {{ plan.category }} |
+        <strong>Personas:</strong> {{ plan.people }} |
+        <strong>Duración:</strong> {{ plan.duration }} min
+      </small>
     </a>
     <div class="d-flex gap-2 mt-2 flex-wrap">
-      <!-- Botones aquí -->
+      <!-- Botón WhatsApp -->
       <a href="https://wa.me/?text=¡Mira este plan! {{ request.url_root }}plan/{{ plan.id }}" target="_blank"
         class="btn btn-success btn-sm d-flex align-items-center gap-1">
         <i class="fab fa-whatsapp"></i> WhatsApp
       </a>
 
+      <!-- Botón compartir nativo -->
       <button onclick="sharePlan('{{ plan.title }}', '{{ request.url_root }}plan/{{ plan.id }}')"
         class="btn btn-warning btn-sm d-flex align-items-center gap-1">
         <i class="fas fa-share-alt"></i> Compartir

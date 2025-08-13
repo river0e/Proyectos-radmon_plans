@@ -15,6 +15,8 @@
       <p>{{ plan.description }}</p>
       <p><strong>Ubicación:</strong> {{ plan.location }}</p>
       <p><strong>Categoría:</strong> {{ plan.category }}</p>
+      <p><strong>Personas:</strong> {{ plan.people }}</p>
+      <p><strong>Duración:</strong> {{ plan.duration }} min</p>
 
       <!-- Botones compartir -->
       <div class="d-flex gap-2 mt-3 flex-wrap">
@@ -30,11 +32,13 @@
       </div>
     </div>
 
-    <a href="{{ url_for('random_plan', category=category) }}" class="btn btn-yellow btn mt-3">Generar otro plan</a>
+    <a href="{{ url_for('random_plan', category=category, search=search, people=people, duration=duration) }}" class="btn btn-yellow btn mt-3">
+      Generar otro plan
+    </a>
 
   {% else %}
     <div class="alert alert-warning">
-      ⚠ No hay planes en esta categoría. ¡Crea uno primero!
+      ⚠ No hay planes con esos filtros. ¡Crea uno primero!
     </div>
   {% endif %}
   

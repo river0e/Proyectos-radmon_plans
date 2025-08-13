@@ -10,30 +10,28 @@ endblock %} {% block content %}
 
   <div class="mb-3">
     <label for="description" class="form-label">Descripción: </label>
-    <textarea
-      class="form-control"
-      id="description"
-      name="description"
-      rows="3"
-      required
-    ></textarea>
+    <textarea class="form-control" id="description" name="description" rows="3" required></textarea>
   </div>
 
   <div class="mb-3">
     <label for="location" class="form-label">Ubicación: </label>
-    <input
-      type="text"
-      class="form-control"
-      id="location"
-      name="location"
-      required
-    />
+    <input type="text" class="form-control" id="location" name="location" required />
   </div>
 
-<div class="mb-3">
-  <label class="form-label d-block mb-2">Categoría: </label>
-  <div class="emoji-category d-flex flex-wrap gap-3">
-    {% for cat in [
+  <div class="mb-3">
+    <label for="people" class="form-label">Nº max de personas</label>
+    <input type="number" class="form-control" id="people" name="people" required min="1">
+  </div>
+
+  <div class="mb-3">
+    <label for="duration" class="form-label">Duración (minutos)</label>
+    <input type="number" class="form-control" id="duration" name="duration" required min="1">
+  </div>
+
+  <div class="mb-3">
+    <label class="form-label d-block mb-2">Categoría: </label>
+    <div class="emoji-category d-flex flex-wrap gap-3">
+      {% for cat in [
       {'label': 'Montaña', 'emoji': '⛰️'},
       {'label': 'Playa o Rio', 'emoji': '🌊'},
       {'label': 'Cóctel', 'emoji': '🍸'},
@@ -48,15 +46,16 @@ endblock %} {% block content %}
       {'label': 'Videojuegos', 'emoji': '🎮'},
       {'label': 'Aventura', 'emoji': '🧗'},
       {'label': 'Relajación', 'emoji': '🛀'}
-    ] %}
+      ] %}
       <input type="radio" class="btn-check" name="category" id="cat-{{ cat.label }}" value="{{ cat.label }}" required>
-      <label class="btn btn-outline-light btn-emoji d-flex flex-column align-items-center" for="cat-{{ cat.label }}" title="{{ cat.label }}">
+      <label class="btn btn-outline-light btn-emoji d-flex flex-column align-items-center" for="cat-{{ cat.label }}"
+        title="{{ cat.label }}">
         <span class="emoji" style="font-size: 2.5rem;">{{ cat.emoji }}</span>
         <small class="mt-1 text-light">{{ cat.label }}</small>
       </label>
-    {% endfor %}
+      {% endfor %}
+    </div>
   </div>
-</div>
 
   <button type="submit" class="btn btn-yellow">Crear Plan</button>
 </form>
